@@ -1,34 +1,48 @@
-<script setup>
-defineProps({
-  username: {
-    type: String,
-    required: true
+<script>
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "PersonalProfile",
+  data() {
+    return{
+      isActive: false
+    }
   },
-  aptitude: {
-    type: String,
-    required: true
+  props: {
+    username: {
+      type: String,
+      required: true
+    },
+    aptitude: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    phone: {
+      type: String,
+      required: true
+    },
+    birthday: {
+      type: String,
+      required: true
+    },
+    location: {
+      type: String,
+      required: true
+    }
   },
-  email: {
-    type: String,
-    required: true
-  },
-  phone: {
-    type: String,
-    required: true
-  },
-  birthday: {
-    type: String,
-    required: true
-  },
-  location: {
-    type: String,
-    required: true
+  methods: {
+    showContent(){
+      this.isActive = !this.isActive
+    }
   }
-})
+});
 </script>
 
 <template>
-  <aside class="sidebar" data-sidebar>
+  <aside class="sidebar" :class = "{active: isActive}">
 
     <div class="sidebar-info">
 
@@ -42,7 +56,7 @@ defineProps({
         <p class="title">{{ aptitude }}</p>
       </div>
 
-      <button class="info_more-btn" data-sidebar-btn>
+      <button class="info_more-btn" v-on:click="showContent">
         <span>Show Contacts</span>
 
         <ion-icon name="chevron-down"></ion-icon>

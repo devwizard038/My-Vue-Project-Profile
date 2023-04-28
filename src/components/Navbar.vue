@@ -1,15 +1,32 @@
+<script>
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: "Navbar",
+  data(){
+    return{}
+  },
+  props: {},
+  method: {
+  }
+});
+</script>
+
 <template>
-  <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
-    <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
-    </div>
-  </div>
+  <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item">
+        <button class="navbar-link active">About</button>
+      </li>
+
+      <li class="navbar-item">
+        <button class="navbar-link">Resume</button>
+      </li>
+
+      <li class="navbar-item">
+        <button class="navbar-link">Portfolio</button>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <style scoped>

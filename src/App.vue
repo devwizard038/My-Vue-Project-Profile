@@ -5,18 +5,13 @@ import Personal_main from './components/Personal_main.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <PersonalProfile username = "Viacheslav Kolinin"
-                      aptitude = "Web developer" 
-                      email = "wizard38.software@gmail.com" 
-                      phone = "+7 352-2795"
-                      birthday = "Mar 8 2003"
-                      location = "Serpukhov, Serpukhov, Russia"/>
-    </div>
-  </header>
-
   <main>
+    <PersonalProfile username = "Viacheslav Kolinin"
+                    aptitude = "Web developer" 
+                    email = "wizard38.software@gmail.com" 
+                    phone = "+7 352-2795"
+                    birthday = "Mar 8 2003"
+                    location = "Serpukhov, Serpukhov, Russia"/>
     <Personal_main />
   </main>
 </template>

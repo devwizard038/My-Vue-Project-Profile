@@ -20,7 +20,7 @@ import Page from './Page.vue'
 
 <template>
   <div class="main-content">
-    <Navbar />
+    <Navbar @response="(_pageId) => pageId = _pageId"/>
     <Page :page-id = "pageId"/>
   </div>
 </template>

@@ -47,16 +47,16 @@ export default defineComponent({
     <div class="sidebar-info">
 
       <figure class="avatar-box">
-        <img src="../assets/images/my-avatar.jpg" alt="Viacheslav Kolinin" width="80">
+        <img src="../assets/images/my-avatar.jpg" alt="Albert Hikashi" width="80" style="border-radius: 100%;">
       </figure>
 
       <div class="info-content">
-        <h1 class="name" title="Viacheslav Kolinin">{{ name }}</h1>
+        <h1 class="name" title="Albert Hikashi">{{ name }}</h1>
 
         <p class="title">{{ aptitude }}</p>
       </div>
 
-      <button class="info_more-btn" v-on:click="showContent">
+      <button class="info_more-btn" @click="showContent">
         <span>Show Contacts</span>
 
         <ion-icon name="chevron-down"></ion-icon>

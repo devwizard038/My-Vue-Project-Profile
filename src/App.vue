@@ -6,12 +6,12 @@ import Personal_main from './components/Personal_main.vue'
 
 <template>
   <main>
-    <PersonalProfile username = "Viacheslav Kolinin"
+    <PersonalProfile username = "Albert Hikashi"
                     aptitude = "Web developer" 
                     email = "wizard38.software@gmail.com" 
-                    phone = "+7 352-2795"
-                    birthday = "Mar 8 2003"
-                    location = "Serpukhov, Serpukhov, Russia"/>
+                    phone = "+1 808-573-7352"
+                    birthday = "Mar 8 1997"
+                    location = "Makawao, Hawaii, USA"/>
     <Personal_main />
   </main>
 </template>

@@ -4,6 +4,9 @@ export default defineComponent({
     name: "Page",
     data(){
         return{
+            testimonialName: "",
+            testimonialText: "",
+            isModal: false
         }
     },
     props: {
@@ -15,6 +18,16 @@ export default defineComponent({
     methods: {
         print(){
             console.log(this.pageId);
+        },
+        onTestimonial(e){
+            this.testimonialName = e.currentTarget.children[0].innerHTML
+            this.testimonialText = e.currentTarget.children[1].children[0].innerHTML
+            this.isModal = true;
+        },
+        onModalCancel(e){
+            console.log(e.target, e.currentTarget);
+            if(e.target == e.currentTarget)
+                this.isModal = false;
         }
     }
 });
@@ -28,11 +41,11 @@ export default defineComponent({
 
         <section class="about-text">
         <p>
-            I'm a creative developer from Serpukhov, Russia. I'm a fullstack developer and mobile app developer. I'm also familiar with ai and I have experience with VGG16 and VGG19.
+            I'm a creative developer from Hawaii, USA. As a full stack and mobile developer, I have the unique ability to design and develop software that's optimized for both desktop and mobile platforms. With my comprehensive knowledge of both front-end and back-end development, I can ensure that your application is optimized for performance, security, and scalability. Whether it's building web applications, developing mobile apps, or creating e-commerce platforms, I have the technical skills and experience necessary to deliver robust solutions that meet the needs of your business. 
         </p>
 
         <p>
-            My job is to build responsive websites for clients to satisfy their demands. I carry out clients' orders for 100% and I add my personal creative opinions for the success of the project. After development, I even add some additional maintenance service for clients so they can easily learn how it works.
+            From strategy and design to implementation and testing, I have been involved in every stage of the development process and I am committed to delivering solutions that exceed expectations.
         </p>
         </section>
 
@@ -112,11 +125,7 @@ export default defineComponent({
         <ul class="testimonials-list has-scrollbar">
 
             <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                <img src="../assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
+            <div class="content-card" @click="onTestimonial">
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Edward Johnson</h4>
 
@@ -130,13 +139,9 @@ export default defineComponent({
             </li>
 
             <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
+            <div class="content-card" @click="onTestimonial">
 
-                <figure class="testimonials-avatar-box">
-                    <img src="../assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Hadi Mashhour</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Chris Anderson</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                 <p>
@@ -148,11 +153,7 @@ export default defineComponent({
             </li>
 
             <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                    <img src="../assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
+            <div class="content-card" @click="onTestimonial">
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Venkat Muhammad</h4>
 
@@ -166,11 +167,7 @@ export default defineComponent({
             </li>
 
             <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                    <img src="../assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
+            <div class="content-card" @click="onTestimonial">
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Sonia Moka</h4>
 
@@ -192,35 +189,24 @@ export default defineComponent({
         - testimonials modal
         -->
 
-        <div class="modal-container" data-modal-container>
+        <div class="modal-container" :class="{ active: isModal }" @click="onModalCancel">
 
-        <div class="overlay" data-overlay></div>
+        <div class="overlay"></div>
 
         <section class="testimonials-modal">
 
-            <button class="modal-close-btn" data-modal-close-btn>
-            <ion-icon name="close-outline"></ion-icon>
+            <button class="modal-close-btn" @click="onModalCancel">
+            <ion-icon name="close-outline" @click="onModalCancel"></ion-icon>
             </button>
-
-            <div class="modal-img-wrapper">
-            <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-            </figure>
-
-            <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
 
             <div class="modal-content">
 
-            <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+            <h4 class="h3 modal-title" data-modal-title>
+                {{ testimonialName }}</h4>
 
             <div data-modal-text>
                 <p>
-                Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                lot of experience
-                and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                consectetur adipiscing
-                elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                    {{ testimonialText }}
                 </p>
             </div>
 
@@ -265,24 +251,12 @@ export default defineComponent({
 
             <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">MBOU secondary school No. 10</h4>
+            <h4 class="h4 timeline-item-title">University of Hawaii - West Oahu</h4>
 
-            <span>2007 - 2013</span>
-
-            <p class="timeline-text">
-                I studied at MBOU secondary school No. 10 in Serpukhov and graduated with a B.
-            </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-            <h4 class="h4 timeline-item-title">Moskovskiy Universitet Imeni S.yu. Vitte</h4>
-
-            <span>2014 — 2017</span>
+            <span>2015 — 2018</span>
 
             <p class="timeline-text">
-                I studied at Moskovskiy Universitet Imeni S.yu. Vitte. I studied software engineering there for 3 years and graduated with a B.
+                During my university, I focus on web development and artificial intelligence. I started my career as a software developer when I was at university and I tried myself to master programming languages and frameworks. As a result, I could get involved with some projects online and I got to know how to use github and how to develop web applications
             </p>
 
             </li>
@@ -305,13 +279,26 @@ export default defineComponent({
 
             <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">Creative developer</h4>
+                <h4 class="h4 timeline-item-title">Junior Full Stack Developer</h4>
 
-            <span>2018 — 2022</span>
+                <span>2018 — 2020</span>
 
-            <p class="timeline-text">
-                I worked as a junior developer in KOTELOV. During this time I contact some clients and got some good reviews for their projects.
-            </p>
+                <p class="timeline-text">
+                    I worked as a junior full stack developer in Imagine WEB Creation. This company is based in Hawaii. During this time, I created 2 websites for society and developed my team-work skills by working in close-collaboration with 6 other students on github.
+                </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Full Stack Developer</h4>
+
+                <span>2020 — 2022</span>
+
+                <p class="timeline-text">
+                    I worked as a full stack developer in Ikagai Technology Corporation. This company is based in Osaka. During this time, I developed a remote control system based on B/S architecture. Used C++ for agent and node.js for web server. Used SSL and certificate for security
+
+                </p>
 
             </li>
 
@@ -329,11 +316,11 @@ export default defineComponent({
 
             <div class="title-wrapper">
                 <h5 class="h5">Backend Development</h5>
-                <data value="80">90%</data>
+                <data value="90">90%</data>
             </div>
 
             <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
+                <div class="skill-progress-fill" style="width: 90%;"></div>
             </div>
 
             </li>
@@ -399,26 +386,6 @@ export default defineComponent({
 
         <section class="projects">
 
-        <ul class="filter-list">
-
-            <li class="filter-item">
-            <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-            <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-            <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-            <button data-filter-btn>Web development</button>
-            </li>
-
-        </ul>
-
         <div class="filter-select-box">
 
             <button class="filter-select" data-select>
@@ -431,39 +398,19 @@ export default defineComponent({
 
             </button>
 
-            <ul class="select-list">
-
-            <li class="select-item">
-                <button data-select-item>All</button>
-            </li>
-
-            <li class="select-item">
-                <button data-select-item>Web design</button>
-            </li>
-
-            <li class="select-item">
-                <button data-select-item>Applications</button>
-            </li>
-
-            <li class="select-item">
-                <button data-select-item>Web development</button>
-            </li>
-
-            </ul>
-
         </div>
 
         <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-            <a href="#">
+            <li class="project-item active" data-filter-item data-category="web development">
+            <a href="https://azuki.com" target="_blank">
 
                 <figure class="project-img">
                 <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                 </div>
 
-                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                <img src="../assets/images/project-1.jpg" alt="finance" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Azuki</h3>
@@ -473,69 +420,15 @@ export default defineComponent({
             </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-            <a href="#">
+            <li class="project-item active" data-filter-item data-category="web design">
+            <a href="https://dsml.ru/" target="_blank">
 
                 <figure class="project-img">
                 <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                 </div>
 
-                <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Anthobexitsolutions</h3>
-
-                <p class="project-category">Web development</p>
-
-            </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-            <a href="#">
-
-                <figure class="project-img">
-                <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Anthobexitsolutions</h3>
-
-                <p class="project-category">Web design</p>
-
-            </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-            <a href="#">
-
-                <figure class="project-img">
-                <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Whole Foods Market</h3>
-
-                <p class="project-category">Applications</p>
-
-            </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-            <a href="#">
-
-                <figure class="project-img">
-                <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                <img src="../assets/images/project-5.png" alt="dsm." loading="lazy">
                 </figure>
 
                 <h3 class="project-title">DSM.</h3>
@@ -545,15 +438,15 @@ export default defineComponent({
             </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
-            <a href="#">
+            <li class="project-item active" data-filter-item data-category="web design">
+            <a href="https://www.metaspark.io/" target="_blank">
 
                 <figure class="project-img">
                 <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                 </div>
 
-                <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                <img src="../assets/images/project-6.png" alt="metaspark" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">MetaSpark</h3>
@@ -563,33 +456,15 @@ export default defineComponent({
             </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-            <a href="#">
+            <li class="project-item active" data-filter-item data-category="applications">
+            <a href="https://www.dickssportinggoods.com/" target="_blank">
 
                 <figure class="project-img">
                 <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                 </div>
 
-                <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Intricategroup</h3>
-
-                <p class="project-category">Web development</p>
-
-            </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-            <a href="#">
-
-                <figure class="project-img">
-                <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                <img src="../assets/images/project-8.jpg" alt="task manager" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Dick's Sporting Goods</h3>
@@ -599,15 +474,15 @@ export default defineComponent({
             </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-            <a href="#">
+            <li class="project-item active" data-filter-item data-category="web development">
+            <a href="https://arrival.com/" target="_blank">
 
                 <figure class="project-img">
                 <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                 </div>
 
-                <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                <img src="../assets/images/project-9.png" alt="arrival" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Arrival</h3>

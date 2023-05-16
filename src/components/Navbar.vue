@@ -3,10 +3,19 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: "Navbar",
   data(){
-    return{}
+    return{
+      btnSelected: "About"
+    }
   },
   props: {},
-  method: {
+  methods: {
+    onClick(e){
+      this.$emit('response', e.target.innerHTML)
+      this.btnSelected = e.target.innerHTML
+    },
+    compare(str){
+      return str == this.btnSelected ? "active" : null;
+    }
   }
 });
 </script>
@@ -15,15 +24,15 @@ export default defineComponent({
   <nav class="navbar">
     <ul class="navbar-list">
       <li class="navbar-item">
-        <button class="navbar-link active">About</button>
+        <button class="navbar-link" :class="compare('About')" @click="onClick">About</button>
       </li>
 
       <li class="navbar-item">
-        <button class="navbar-link">Resume</button>
+        <button class="navbar-link" :class="compare('Resume')" @click="onClick">Resume</button>
       </li>
 
       <li class="navbar-item">
-        <button class="navbar-link">Portfolio</button>
+        <button class="navbar-link" :class="compare('Portfolio')" @click="onClick">Portfolio</button>
       </li>
     </ul>
   </nav>

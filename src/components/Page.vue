@@ -131,7 +131,7 @@ export default defineComponent({
 
                 <div class="testimonials-text" data-testimonials-text>
                 <p>
-                    Viacheslav was hired to create a remote control system for me. He showed himself as a gifted developer and did his best to satisfy my demands. He is a talented backend developer and creative front-end designer. He is very friendly and cool, a client-friendly developer. I look forward to working with him further.
+                    Albert was hired to create a remote control system for me. He showed himself as a gifted developer and did his best to satisfy my demands. He is a talented backend developer and creative front-end designer. He is very friendly and cool, a client-friendly developer. I look forward to working with him further.
                 </p>
                 </div>
 
@@ -145,7 +145,7 @@ export default defineComponent({
 
                 <div class="testimonials-text" data-testimonials-text>
                 <p>
-                    Viacheslav showed a good skill of project management and maintenance. He is a database expert and he is really good at debugging. He solved our site's problem perfectly. Looking forward to working with him again.
+                    Albert showed a good skill of project management and maintenance. He is a database expert and he is really good at debugging. He solved our site's problem perfectly and showed skills of maintenance. Looking forward to working with him again.
                 </p>
                 </div>
 
@@ -155,11 +155,11 @@ export default defineComponent({
             <li class="testimonials-item">
             <div class="content-card" @click="onTestimonial">
 
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Venkat Muhammad</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jack Jones</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                 <p>
-                    Viacheslav worked on a small project using google search api. He showed himself as a good view of programming and introduced me to the world of apis. He is a good developer and really client-friendly. Looking forward to working with him again.
+                    Albert worked on a project using google search api. He showed himself as a good view of programming and introduced me to the world of apis. He is a good developer and really client-friendly. Looking forward to working with him again.
                 </p>
                 </div>
 
@@ -169,11 +169,11 @@ export default defineComponent({
             <li class="testimonials-item">
             <div class="content-card" @click="onTestimonial">
 
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Sonia Moka</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Alisha Zeta</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                 <p>
-                    Viacheslav is a PHP and C master! He worked on a project of converting C project to PHP and he showed his skills of logistics. He is a cryptography expert, too. Looking forward to working with him again.
+                    Albert is a PHP and C master! He worked on a project of converting C project to PHP and he showed his skills of logistics. He is a cryptography expert, too. Looking forward to working with him again.
                 </p>
                 </div>
 
@@ -385,20 +385,6 @@ export default defineComponent({
         </header>
 
         <section class="projects">
-
-        <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-            <div class="select-value" data-selecct-value>Select category</div>
-
-            <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-            </div>
-
-            </button>
-
-        </div>
 
         <ul class="project-list">
 
